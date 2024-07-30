@@ -37,28 +37,24 @@ class Pacote:
         packet = f"{header}{Pacote.separador}{payload}"
         Pacote.hash2.update(packet.encode('utf-8'))
         checksum = Pacote.hash2.hexdigest()
-        print(checksum)
-        packet = f"{packet}{Pacote.separador}{checksum}{Pacote.separador_pk}"
+        packet = f"{packet}{Pacote.separador}{checksum}"#{Pacote.separador_pk}"
         binary_packet = packet.encode()
         return binary_packet
     
     @staticmethod
     def decode(binary_packet):
-        packet = binary_packet.decode()
-        packets = packet.split(Pacote.separador_pk)
-        print(packets)
-        hpc = []
-        for p in packets:
-            hpc.append(p.split(Pacote.separador))
-            # print(hpc)
-
-        return hpc
+        packet = binary_packet.decode('utf-8')
+        #packets = packet.split(Pacote.separador_pk)
+        return packet.split(Pacote.separador)
+    
 
     @staticmethod
     def check(packet):
-        id,payload,checksum = packet
+        try:
+            id,payload,checksum = packet
+        except:
+            return False
         header = f"{id}"
-
         p = f"{header}{Pacote.separador}{payload}"
         Pacote.hash2.update(p.encode('utf-8'))
         checksum = Pacote.hash2.hexdigest()
@@ -79,21 +75,27 @@ if __name__ == "__main__":
         
         # recebe os meta dados
         md = Pacote.decode(cliente_socket.recv(1000))
-        if(Pacote.check(md[0])):
-            metadados = json.loads(str.replace(md[0][1],'\'','\"'))
+        if(Pacote.check(md)):
+            metadados = json.loads(str.replace(md[1],'\'','\"'))
             nome = metadados['nome']
             tam_pac=metadados['tam_pac']
             qtd_pac=metadados['qtd_pac']
 
             buffer=[]
             for i in range(1,qtd_pac+1):
-                buffer.append(Pacote.decode(cliente_socket.recv(tam_pac)))
+                buffer.append(Pacote.decode(cliente_socket.recv(tam_pac+500)))
 
-            
-            # file = open(nome,"w")
-            # print(buffer)
-            # for i in range(1,qtd_pac+1):
-            #     file.write(buffer[i][1])
+            # buffer.sort();
+            file = open(nome,"w")
+            for i in range(0,qtd_pac):
+                
+                if(Pacote.check(buffer[i])):
+                    print("ok ",end="")
+                    file.write(buffer[i][1])
+                else:
+                    print("erro na transferencia")
+                    file.close()
+                    break
 
 
         else:
@@ -104,18 +106,20 @@ if __name__ == "__main__":
         cliente = Cliente(nome)
         cliente.start(endereco, porta)
 
+        tam_pacs = [500,1000,1500]
+
         # Le metadados do arquivo
         nome_arq = input("Nome do arquivo: ")
-        tam_pac = float(input("Tamanho do pacote: "))
+        tam_pac = tam_pacs[int(input("Tamanho do pacote\n[1] - 500\n[2] - 1000\n[3] - 1500\n"))-1]
         file = open(nome_arq)
-        qtd_pac = math.ceil((os.path.getsize(nome_arq))/tam_pac)
+        qtd_pac = math.ceil((os.path.getsize(nome_arq))/float(tam_pac))
         
         # envia metadados    
-        md = {"nome":os.path.basename(nome_arq),"tam_pac":int(tam_pac),"qtd_pac":qtd_pac}
+        md = {"nome":os.path.basename(nome_arq),"tam_pac":tam_pac,"qtd_pac":qtd_pac}
         cliente.conexao.send((Pacote.encode(0,md)))
 
 
         for i in range(1,qtd_pac+1):
-            dado = file.read(int(tam_pac)+300)
+            dado = file.read(tam_pac+300)
             cliente.conexao.send((Pacote.encode(i,dado)))
     
