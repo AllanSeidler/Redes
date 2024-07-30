@@ -59,7 +59,6 @@ class Pacote:
         p = f"{header}{Pacote.separador}{payload}"
         Pacote.hash2.update(p.encode('utf-8'))
         checksum = Pacote.hash2.hexdigest()
-        print(checksum)
         return checksum==Pacote.hash2.hexdigest()
 
 
@@ -92,9 +91,10 @@ if __name__ == "__main__":
                 #     print("Deu errado :P")
                 #     break
             
-            file = open(nome,"w")
-            for i in range(1,qtd_pac+1):
-                file.write(buffer[i][1])
+            # file = open(nome,"w")
+            print(buffer)
+            # for i in range(1,qtd_pac+1):
+            #     file.write(buffer[i][1])
 
 
         else:
