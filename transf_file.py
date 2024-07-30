@@ -78,7 +78,7 @@ if __name__ == "__main__":
         # recebe os meta dados
         md = Pacote.decode(cliente_socket.recv(100))
         if(Pacote.check(md[0])):
-            metadados = str.replace(md[0][1],'\'','\"')
+            metadados = json.loads(str.replace(md[0][1],'\'','\"'))
             nome = metadados['nome']
             tam_pac=metadados['tam_pac']
             qtd_pac=metadados['qtd_pac']
@@ -87,20 +87,15 @@ if __name__ == "__main__":
             for i in range(1,qtd_pac+1):
                 buffer.append(Pacote.decode(cliente_socket.recv(tam_pac)))
             
-            for i in range(1,qtd_pac+1):
-                if(Pacote.check(buffer[i])):
-                    print("Deu errado :P")
-                    break
+            # for i in range(1,qtd_pac+1):
+                # if(Pacote.check(buffer[i])):
+                #     print("Deu errado :P")
+                #     break
             
             file = open(nome,"w")
             for i in range(1,qtd_pac+1):
                 file.write(buffer[i][1])
-        
-                
-                    
-                
-            
-            
+
 
         else:
             print("erro na transferencia!")
