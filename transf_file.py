@@ -46,9 +46,12 @@ class Pacote:
     def decode(binary_packet):
         packet = binary_packet.decode()
         packets = packet.split(Pacote.separador_pk)
+        print(packets)
         hpc = []
         for p in packets:
             hpc.append(p.split(Pacote.separador))
+            # print(hpc)
+
         return hpc
 
     @staticmethod
@@ -82,9 +85,9 @@ if __name__ == "__main__":
             tam_pac=metadados['tam_pac']
             qtd_pac=metadados['qtd_pac']
 
-            buffer=[]
+            buffer=0
             for i in range(1,qtd_pac+1):
-                buffer.append(Pacote.decode(cliente_socket.recv(tam_pac)))
+                buffer = (Pacote.decode(cliente_socket.recv(tam_pac)))
             
             # for i in range(1,qtd_pac+1):
                 # if(Pacote.check(buffer[i])):
@@ -92,7 +95,7 @@ if __name__ == "__main__":
                 #     break
             
             # file = open(nome,"w")
-            print(buffer)
+            # print(buffer)
             # for i in range(1,qtd_pac+1):
             #     file.write(buffer[i][1])
 
