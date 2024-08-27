@@ -1,0 +1,140 @@
+
+
+
+
+                      THE FINAL FANTASY TACTICS ADVANCE
+                      =================================
+                           MECHANICS GUIDE   v0.95
+                           ===============   =====
+
+                 by Terence Fergusson <tf_faq@dsl.pipex.com>
+
+
+
+
+
+Final Fantasy Tactics Advance is copyright 2003 SQUARE ENIX CO., LTD.
+Final Fantasy Tactics is a registered trademark of SQUARE ENIX CO., LTD.
+
+
+This document is entirely my work, and was written and is owned by me,
+Terence Fergusson.  All copyrights and trademarks are acknowledged where not
+specifically mentioned.  If you wish to reproduce this document AS IS, you
+may do so without having to ask my permission, providing that the entire
+document including this copyright notice is left intact, preferably in ASCII
+text format, and is done so for non-profit purposes.  I do, however, reserve
+the right to revoke permission and ask for it to be taken down should I feel
+it necessary.
+
+Please do not e-mail me asking questions about FFTA that this document is not
+meant to address.  If you have found this file, you likely also have access
+to other FAQs on Final Fantasy Tactics Advance that could help you far more
+quickly than I check my mail.
+
+In addition, urgent concerns are better directed to the GameFAQs message
+boards where others may be able to help.  Some matters may be better off
+discussed and tested there.  Please keep this in mind before e-mailing me.
+
+
+
+=====================
+== VERSION HISTORY ==
+=====================
+
+  v0.90 : 15/10/03 : Original Release
+  v0.91 : 10/12/03 : Throw List added, Your Clan section added
+                     Quests section updated, few mistakes corrected
+  v0.95 : 03/08/04 : Fixed mistakes in Recruitment
+                     Added the Totema to the Level Growth tables
+                     Added basic Hit Rate and Damage formulas
+                     Added the Ability Data Appendix
+
+
+
+==============
+== FOREWORD ==
+==============
+  Before you take one step further, fair warning.  This isn't finished yet.
+This document is out here now only because of the sheer amount of data
+already compiled that was really needed now and not later when everything is
+finished.  As such, you will not find much about damage and actual ability
+mechanics yet, since those sections are not complete yet.  They shall come in
+time.
+
+  This is very much a work in progress, but I'm pleased to say that much has
+already been deciphered to the point where much of what's left is just typing
+things up and testing out obscure cases.  However, these things take time,
+and there is still a lot to test.
+
+  Please note: the main purpose of this update was to get some things I'd
+half worked on in the last few months out into the guide, so that people can
+make use of them.  However, this was done mostly so that I could concentrate
+on other things for the next few months, so expect no further work on this
+for the recent future.  I'll pick it back up again in a few months time,
+after I've finished some other outstanding projects.
+
+  Til next time.
+
+
+
+=======================
+== TABLE OF CONTENTS ==
+=======================
+
+ Line
+  106 : Definitions
+  196 : The Random Number Generator
+  313 : Ability Effects
+  350 : Facing
+  393 : Basic Hit Rates
+  743 : Basic Damage Formula
+ 1064 : Combos
+ 1220 : Turn Order
+ 1463 : Misc Combat Data
+ 1554 : Quests
+ 1748 : Your Clan
+ 2088 : The Monster Bank
+ 2307 : Unit Generation
+ 2695 : Recruitment
+ 3047 : Mission Items
+ 3243 : Appendix I: Ability Data
+ 9070 : Credits
+
+
+
+=================
+== DEFINITIONS ==
+=================
+  Before we get into the specifics of FFTA, some notation must be defined.
+
+FFTA Definitions
+================
+  Our standard abbreviations and stat definitions to help make life easier:
+
+    HP:    Hit Points - How much damage a unit can take before they are KOed
+    MP:    Magic Points - How much mystical energy they have to use for
+             certain attacks
+    WAtk:  Weapon Atk - The physical attack power of a unit
+    WDef:  Weapon Def - Defense against physical attacks
+    MPow:  Magic Pow - The magical attack power of a unit
+    MRes:  Magic Res - Defense against magical attacks
+    Speed: A measure of how often a unit can take a turn
+
+    Mov:   Move - How far a unit can move on its turn
+    Jmp:   Jump - How far a unit can jump vertically in safety
+    Evade: How well a unit can avoid offensive attacks
+    SRes:  Status Resist - How well a unit can resist status attacks
+
+    JP:    Judge Points - Reward for following recommded laws and KOing
+             units, and can be spent on Combos and Totema
+
+
+    Primary Weapon: Important with Double Sword.  This is the weapon you will
+                      attack with first, and will be the one you use for all
+                      abilities that do not use the second weapon.  Your
+                      Primary Weapon is the one with the most Weapon Atk.
+
+    EqAtk: Equipment Attack - We'll be using this term a bit without too much
+             warning, so it should be well defined.  This is the total bonus
+             to Weapon Atk you have from your current equipment, excluding
+             your Secondary Weapon if you're using Do
