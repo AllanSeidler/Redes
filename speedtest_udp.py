@@ -1,5 +1,22 @@
 
 from speedtest import SpeedTest
 
+
+TAMANHO_PACOTE = 500
+
 class UDPSpeedTest(SpeedTest):
-    pass
+    
+
+    
+    def result():
+        pass
+
+
+    def send():
+        pass
+
+
+    def receive():
+        pass
+
+
