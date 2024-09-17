@@ -3,6 +3,7 @@ from random import randbytes
 from enum import Enum
 from time import sleep
 import socket
+from socket import timeout
 
 
 class Roles(Enum):
@@ -45,17 +46,25 @@ class SpeedTest(metaclass=ABCMeta):
             sleep(2)
             self.connection.bind(self.listen_address)
             print(f"Aguardando conexão em {self.listen_address}")
+            self.connection.listen(1)  # O receiver precisa ouvir conexões
+            conn, addr = self.connection.accept()  # Aceitar a conexão
+            print(f"Conexão estabelecida com {addr}")
+            self.connection = conn  # Substituir o socket para a conexão aceita
+        
             self.receive()
         else:
             print(f'Role de valor {self.role} inexistente.')
 
     @staticmethod
-    def recvall(sock, size):
+    def recvall(sock, size) :
         """ Recebe um número de bytes através de um socket. """
         message = b""
         while len(message) < size:
-            buffer = sock.recv(size - len(message))
-            message += buffer
+            try:
+                buffer = sock.recv(size - len(message))
+                message += buffer
+            except timeout:
+                pass
         return message
 
     @staticmethod
