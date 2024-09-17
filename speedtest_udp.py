@@ -7,7 +7,7 @@ TAMANHO_PACOTE = 500
 class SpeedTestUDP(SpeedTest):
     CONFIRMATION_PACKET = b"\x01" # = 1
 
-    def __init__(self, listen_address, connect_address, port, role, socket_type):
+    def __init__(self, listen_address, connect_address, port, role):
         super().__init__(listen_address, connect_address, port, role, SOCK_DGRAM)
     
     def receive(self):

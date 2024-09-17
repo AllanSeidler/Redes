@@ -37,6 +37,7 @@ class SpeedTest(metaclass=ABCMeta):
 
     def execute_role(self):
         if self.role == Roles.SENDER:
+            print(f"Executando de {self.connect_address}")
             sleep(1)
             self.connection.connect(self.connect_address)
             self.send()
