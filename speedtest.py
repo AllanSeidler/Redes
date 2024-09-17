@@ -44,7 +44,6 @@ class SpeedTest(metaclass=ABCMeta):
         elif self.role == Roles.RECEIVER:
             sleep(2)
             self.connection.bind(self.listen_address)
-            self.connection.listen(1)  # O receiver precisa ouvir conexões
             print(f"Aguardando conexão em {self.listen_address}")
             conn, addr = self.connection.accept()  # Aceitar a conexão
             print(f"Conexão estabelecida com {addr}")

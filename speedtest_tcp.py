@@ -10,6 +10,7 @@ class SpeedTestTCP(SpeedTest):
         super().__init__(listen_address, connect_address, port, role, SOCK_STREAM)
 
     def receive(self):
+        self.connection.listen(1)  # O receiver precisa ouvir conexões
         received_bytes = 0
         packet = b""
 
