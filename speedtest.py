@@ -13,7 +13,7 @@ class Roles(Enum):
 
 class SpeedTest(metaclass=ABCMeta):
     # Declaração das constantes
-    DURATION = 20  # Duração dos testes.
+    DURATION = 1  # Duração dos testes.
     INT_BYTE_SIZE = 8  # Tamanho da representação de um inteiro como bytes.
     PACKET_SIZE = 1024  # Tamanho de cada pacote. (1kb)
     EMPTY_PACKET = b"\x00" * PACKET_SIZE  # Pacote vazio indicando o fim da transmissão.
@@ -39,18 +39,14 @@ class SpeedTest(metaclass=ABCMeta):
     def execute_role(self):
         if self.role == Roles.SENDER:
             print(f"Executando de {self.connect_address}")
-            sleep(1)
-            self.connection.connect(self.connect_address)
+            # sleep(1)
+            
             self.send()
         elif self.role == Roles.RECEIVER:
-            sleep(2)
+            # sleep(2)
             self.connection.bind(self.listen_address)
             print(f"Aguardando conexão em {self.listen_address}")
-            self.connection.listen(1)  # O receiver precisa ouvir conexões
-            conn, addr = self.connection.accept()  # Aceitar a conexão
-            print(f"Conexão estabelecida com {addr}")
-            self.connection = conn  # Substituir o socket para a conexão aceita
-        
+
             self.receive()
         else:
             print(f'Role de valor {self.role} inexistente.')

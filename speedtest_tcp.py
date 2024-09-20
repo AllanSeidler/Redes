@@ -10,10 +10,14 @@ class SpeedTestTCP(SpeedTest):
         super().__init__(listen_address, connect_address, port, role, SOCK_STREAM)
 
     def receive(self):
-
+        self.connection.listen(1)  # O receiver precisa ouvir conexões
+        conn, addr = self.connection.accept()  # Aceitar a conexão
+        print(f"Conexão estabelecida com {addr}")
+        self.connection = conn  # Substituir o socket para a conexão aceita
+    
         received_bytes = 0
         packet = b""
-
+        
         while packet != self.EMPTY_PACKET:
             packet = self.recvall(self.connection, self.PACKET_SIZE)
             received_bytes += len(packet)
@@ -29,6 +33,7 @@ class SpeedTestTCP(SpeedTest):
 
     
     def send(self):
+        self.connection.connect(self.connect_address)
         transmitted_bytes = 0
         
         end_time = datetime.now() + timedelta(seconds=self.DURATION)
