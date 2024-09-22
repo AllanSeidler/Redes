@@ -22,6 +22,9 @@ class SpeedTestTCP(SpeedTest):
             packet = self.recvall(self.connection, self.PACKET_SIZE)
             received_bytes += len(packet)
         
+        # remove o pacote vazio da contagem
+        received_bytes-= len(packet)
+        
         # Envia o total salvo.
         stats = received_bytes.to_bytes(self.INT_BYTE_SIZE, "big", signed=False)
         self.connection.sendall(stats)
