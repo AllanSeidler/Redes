@@ -27,6 +27,7 @@ else:
     print("Opção inválida!")
     sys.exit(1)
 
+print()
 
 tcp_tester = SpeedTestTCP(listen_address, connect_address, port, starting_role)
 tcp_tester.run()
