@@ -33,9 +33,10 @@ class SpeedTestUDP(SpeedTest):
             # sleep(3)
             # Envia o total salvo        
             stats = received_bytes.to_bytes(self.INT_BYTE_SIZE, "big", signed=False)
-            self.connection.sendto(stats,self.connect_address)
+            self.connection.send(stats,self.connect_address)
         
         except timeout:
+            self.connection.send(self.EMPTY_PACKET)
             print("Erro: Tempo de resposta excedido ao tentar receber o pacote")
     
         print("recebimento completo")
@@ -48,18 +49,18 @@ class SpeedTestUDP(SpeedTest):
         transmitted_bytes = 0
         received_bytes = 0  # Inicializando para evitar o UnboundLocalError
 
-        print("iniciando envio")
+        print("iniciando envio...")
         self.connection.settimeout(5)  # Define um timeout de 5 segundos
         try:
             while datetime.now() < end_time:
-                self.connection.sendto(self.data, self.connect_address)
+                self.connection.send(self.data, self.connect_address)
                 transmitted_bytes += len(self.data)
 
-            self.connection.sendto(self.EMPTY_PACKET, self.connect_address)
+            self.connection.send(self.EMPTY_PACKET, self.connect_address)
 
             try:
                 stats_packet = transmitted_bytes.to_bytes(self.INT_BYTE_SIZE, "big", signed=False)
-                self.connection.sendto(stats_packet, self.connect_address)
+                self.connection.send(stats_packet, self.connect_address)
             
                 
             
