@@ -1,0 +1,156 @@
+----    TESTE 1     ----
+Iniciando teste com socket TCP...
+Aguardando conexão do destinatário...
+Iniciando o envio de dados...
+-----------------------------------------------------------
+Resultados usando socket TCP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 762,724,000 bytes. Ou ainda 727.39 Mb
+Pacotes enviados: 1,525,448
+Pacotes perdidos: 0
+Pacotes por segundo: 76,272 p/s
+Velocidade de download: 290.96 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 773,707,000 bytes. Ou ainda 737.86 Mb
+Pacotes enviados: 1,547,414
+Pacotes perdidos: 0
+Pacotes por segundo: 77,370 p/s
+Velocidade de upload: 295.15 Mb/s
+
+-----------------------------------------------------------
+Iniciando teste com socket UDP...
+Aguardando conexão do destinatário...
+Iniciando o teste de upload...
+Iniciando teste de download...
+-----------------------------------------------------------
+Resultados usando socket UDP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,249,543,500 bytes. Ou ainda 1.16 Gb
+Pacotes enviados: 2,499,087
+Pacotes perdidos: 6,085
+Pacotes por segundo: 124,650 p/s
+Velocidade de download: 475.5 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,340,031,500 bytes. Ou ainda 1.25 Gb
+Pacotes enviados: 2,680,063
+Pacotes perdidos: 1,126
+Pacotes por segundo: 133,946 p/s
+Velocidade de upload: 510.97 Mb/s
+
+-----------------------------------------------------------
+----    TESTE 2     ----
+Iniciando teste com socket TCP...
+Aguardando conexão do destinatário...
+Iniciando o envio de dados...
+-----------------------------------------------------------
+Resultados usando socket TCP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 885,782,500 bytes. Ou ainda 844.75 Mb
+Pacotes enviados: 1,771,565
+Pacotes perdidos: 0
+Pacotes por segundo: 88,578 p/s
+Velocidade de download: 337.9 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 891,641,000 bytes. Ou ainda 850.34 Mb
+Pacotes enviados: 1,783,282
+Pacotes perdidos: 0
+Pacotes por segundo: 89,164 p/s
+Velocidade de upload: 340.13 Mb/s
+
+-----------------------------------------------------------
+Iniciando teste com socket UDP...
+Aguardando conexão do destinatário...
+Iniciando o teste de upload...
+Iniciando teste de download...
+-----------------------------------------------------------
+Resultados usando socket UDP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,372,154,500 bytes. Ou ainda 1.28 Gb
+Pacotes enviados: 2,744,309
+Pacotes perdidos: 6,615
+Pacotes por segundo: 136,884 p/s
+Velocidade de download: 522.17 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,358,003,500 bytes. Ou ainda 1.26 Gb
+Pacotes enviados: 2,716,007
+Pacotes perdidos: 3,468
+Pacotes por segundo: 135,626 p/s
+Velocidade de upload: 517.38 Mb/s
+
+-----------------------------------------------------------
+----    TESTE 3     ----
+Iniciando teste com socket TCP...
+Aguardando conexão do destinatário...
+Iniciando o envio de dados...
+-----------------------------------------------------------
+Resultados usando socket TCP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 711,033,500 bytes. Ou ainda 678.09 Mb
+Pacotes enviados: 1,422,067
+Pacotes perdidos: 0
+Pacotes por segundo: 71,103 p/s
+Velocidade de download: 271.24 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 792,133,500 bytes. Ou ainda 755.44 Mb
+Pacotes enviados: 1,584,267
+Pacotes perdidos: 0
+Pacotes por segundo: 79,213 p/s
+Velocidade de upload: 302.17 Mb/s
+
+-----------------------------------------------------------
+Iniciando teste com socket UDP...
+Aguardando conexão do destinatário...
+Iniciando o teste de upload...
+Iniciando teste de download...
+-----------------------------------------------------------
+Resultados usando socket UDP
+
+Download
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,367,711,000 bytes. Ou ainda 1.27 Gb
+Pacotes enviados: 2,735,422
+Pacotes perdidos: 5,533
+Pacotes por segundo: 136,494 p/s
+Velocidade de download: 520.69 Mb/s
+
+Upload
+Tamanho dos pacotes: 500 bytes
+Tempo de execução do teste: 20s
+Total de bytes transmitidos: 1,257,883,000 bytes. Ou ainda 1.17 Gb
+Pacotes enviados: 2,515,766
+Pacotes perdidos: 20,950
+Pacotes por segundo: 124,740 p/s
+Velocidade de upload: 475.85 Mb/s
+
+-----------------------------------------------------------
