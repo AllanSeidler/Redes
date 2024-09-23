@@ -1,36 +1,31 @@
-import logging
 import sys
+from speedtest import FuncaoCliente
+from udp_speedtest import RedesUDPSpeed
+from tcp_speedtest import RedesTCPSpeed
 
-from speedtest import Roles
-from speedtest_udp import SpeedTestUDP
-from speedtest_tcp import SpeedTestTCP
+def executar_teste():
+    """ Entrada dos dados de endereço, porta e operação. """
+    endereco_local = input("Endereço local: ")
+    endereco_remoto = input("Endereço remoto: ")
+    porta = int(input("Número da porta: "))
+    tipo_cliente = input("[E] Enviar || [R] Receber: ")
 
+    if porta < 1000 or porta > 65535:
+        print("Porta deve estar entre 1000 e 65535.")
+        sys.exit(1)
 
-"""
-Lê os argumentos fornecidos pelo usuário, cria e executa as funções de envio e recebimento.
-"""
+    if tipo_cliente.lower() == "e":
+        funcao_inicial = FuncaoCliente.REMETENTE
+    elif tipo_cliente.lower() == "r":
+        funcao_inicial = FuncaoCliente.DESTINATARIO
+    else:
+        print("Opção inválida.")
+        sys.exit(1)
 
-listen_address = input("Seu endereço: ")
-connect_address = input("Endereço do outro usuário: ")
-port = int(input("Porta: "))
-client_type = input("Enviar[E] ou receber[R]?: ")
+    teste_tcp = RedesTCPSpeed(endereco_local, endereco_remoto, porta, funcao_inicial)
+    teste_tcp.iniciar()
+    teste_udp = RedesUDPSpeed(endereco_local, endereco_remoto, porta, funcao_inicial)
+    teste_udp.iniciar()
 
-if port < 4999 or port > 6000:
-    print("Porta deve ser 5000 alguma coisa!")
-    sys.exit(1)
-
-if client_type.lower() == "e":
-    starting_role = Roles.SENDER
-elif client_type.lower() == "r":
-    starting_role = Roles.RECEIVER
-else:
-    print("Opção inválida!")
-    sys.exit(1)
-
-print()
-
-tcp_tester = SpeedTestTCP(listen_address, connect_address, port, starting_role)
-tcp_tester.run()
-udp_tester = SpeedTestUDP(listen_address, connect_address, port, starting_role)
-udp_tester.run()
-
+if __name__ == "__main__":
+    executar_teste()
